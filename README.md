@@ -1,6 +1,6 @@
 # React Native Select List
 [![GitHub issues](https://img.shields.io/github/issues/georgest/react-native-select-list.svg)](https://github.com/georgest/react-native-select-list/issues)
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/georgest/react-native-select-list/blob/master/LICENSE)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/georgest/react-native-select-list/blob/master/LICENSE)
 
 <img src="http://georgest.me/images/projects/react-native-select-list/demo.jpg" width="320" />
 
