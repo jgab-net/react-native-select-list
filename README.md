@@ -39,7 +39,7 @@ import { Select, Option } from 'react-native-select-list';
 | **listPosition** | string | 'down' | Change position of dropdown list. You can set it 'up', so it will shows above the select. |
 | **listStyle** | Object | null | Styles for dropdown list.
 
-### Option
+### Option properties
 
 | Prop | Type | Default | Description |
 | --- | --- | --- | --- |
