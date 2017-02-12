@@ -12,14 +12,14 @@ import {
   View
 } from 'react-native';
 
-import { Select, Option } from './src';
+import { Select, Option } from 'react-native-select-list';
 
 export default class ReactNativeSelectList extends Component {
   render() {
     return (
       <View style={styles.container}>
 
-        <Select selectStyle={{marginBottom: 20}}>
+        <Select>
           <Option value={1}>List item 1</Option>
           <Option value={2}>List item 2</Option>
           <Option value={3}>List item 3</Option>
