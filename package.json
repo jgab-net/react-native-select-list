@@ -1,0 +1,19 @@
+{
+  "name": "react-native-select-list",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react-native",
+    "react-native-component",
+    "react-native-select",
+    "react-native-dropdown",
+    "ios",
+    "android"
+  ],
+  "author": "Georgi Stoilov",
+  "license": "MIT"
+}
