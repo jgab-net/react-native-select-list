@@ -2,7 +2,9 @@
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/georgest/react-native-select-list/blob/master/LICENSE)
 ___
 
-Simple HTML **select** for React Native Applications.
+<img src="http://georgest.me/images/projects/react-native-select-list/demo.jpg" width="320" />
+
+Simple **select** for React Native Applications.
 
 ## Instalation
 
