@@ -10,7 +10,10 @@ Simple **select** for React Native Applications.
 
 ## Instalation
 
+```
 npm i react-native-select-list --save-dev
+```
+
 
 ## Usage
 
