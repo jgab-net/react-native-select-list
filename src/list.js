@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, TouchableWithoutFeedback, Dimensions, Text, ScrollView, Animated } from 'react-native';
+import { StyleSheet, View, Modal, TouchableWithoutFeedback, Dimensions, Text, ScrollView, Animated } from 'react-native';
 
 const window = Dimensions.get('window');
 const AnimatedScrollView = Animated.createAnimatedComponent(ScrollView);
@@ -9,52 +9,50 @@ class List extends Component {
     super();
 
     this.state = {
+      x: 0,
+      y: 0,
+      width: 0,
       height: 0,
+      list: 0,
     }
   }
 
-  setHeight() {
+  measureProps() {
     this.refs.list.measure((x, y, width, height) => {
       this.setState({
-        height: height
+        list: height,
+      });
+    });
+    this.props.select.measureInWindow((x, y, width, height) => {
+      this.setState({
+        x: x,
+        y: y,
+        width: width,
+        height: height,
       });
     });
   }
 
   render() {
-    const { children, select } = this.props;
-
-    let position = this.props.position;
-
-    if (position !== 'up' && select.y + select.height + this.state.height > window.height) {
-      position = 'up';
-    } else {
-      position = 'down';
-    }
+    const { children, position } = this.props;
 
     return (
-      <View
-        style={[
-          styles.overlay,
-          {
-            top: -select.y,
-            left: -select.x
-          }
-        ]}>
+      <Modal
+        transparent={true}>
         <TouchableWithoutFeedback onPress={this.props.onOverlayPress}>
           <View style={{ flex: 1}}></View>
         </TouchableWithoutFeedback>
         <View
-          onLayout={this.setHeight.bind(this)}
+          onLayout={this.measureProps.bind(this)}
           ref="list"
           style={[
             styles.list,
             {
-              width: select.width,
+              width: this.state.width,
               maxHeight: this.props.height,
-              left: select.x,
-              top: select.y + (position === 'down' ? select.height : -this.state.height),
-              opacity: this.state.height ? 1 : 0,
+              left: this.state.x,
+              top: this.state.y + (position === 'down' ? this.state.height : -this.state.list),
+              opacity: this.state.list ? 1 : 0,
             },
             this.props.style
           ]}>
@@ -79,18 +77,12 @@ class List extends Component {
             </AnimatedScrollView>
           </View>
         </View>
-      </View>
+      </Modal>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  overlay: {
-    position: 'absolute',
-    width: window.width,
-    height: window.height,
-    backgroundColor: 'transparent',
-  },
   list: {
     position: 'absolute',
     borderWidth: 1,

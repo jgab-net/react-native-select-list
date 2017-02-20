@@ -19,30 +19,24 @@ class Select extends Component {
     this.onOptionPressed = this.onOptionPressed.bind(this);
 
     this.state = {
-      select: {
-        x: 0,
-        y: 0,
-        width: 0,
-        height: 0,
-      },
       value: defaultValue,
       visible: 0,
       listHeight: 0,
     }
   }
 
-  measureProps() {
-    this.refs.select.measureInWindow((x, y, width, height) => {
-      this.setState({
-        select: {
-          x: x,
-          y: y,
-          width: width,
-          height: height,
-        }
-      });
-    });
-  }
+  // measureProps() {
+  //   this.refs.select.measureInWindow((x, y, width, height) => {
+  //     this.setState({
+  //       select: {
+  //         x: x,
+  //         y: y,
+  //         width: width,
+  //         height: height,
+  //       }
+  //     });
+  //   });
+  // }
 
   onOptionPressed(value, text) {
     this.setState({
@@ -76,17 +70,16 @@ class Select extends Component {
 
     return (
       <View
-        onLayout={this.measureProps.bind(this)}
         style={[styles.container, {zIndex: this.props.zIndex + this.state.visible, paddingBottom: this.state.visible && Platform.OS === 'android' ? this.props.listHeight : 0}]}>
         <TouchableWithoutFeedback
           onPress={this.toggleVisibility.bind(this)}
           >
           <View
-            ref="select"
+            ref={(view) => { this.select = view; }}
             style={[styles.select, this.props.selectStyle, {paddingHorizontal: padding}]}
             >
             <Text
-              style={[this.props.selectTextStyle, {width: this.state.select.width - offset}]}
+              style={[this.props.selectTextStyle, {width: 222 - offset}]}
               numberOfLines={1}
               lineBreakMode='tail'
             >{ this.state.value }</Text>
@@ -97,7 +90,7 @@ class Select extends Component {
           this.state.visible ?
             <List
               style={this.props.listStyle}
-              select={this.state.select}
+              select={this.select}
               height={this.props.listHeight}
               position={this.props.listPosition}
               onOverlayPress={this.toggleVisibility.bind(this)}
@@ -108,7 +101,6 @@ class Select extends Component {
             :
             null
         }
-
         </View>
     );
   }
@@ -126,6 +118,11 @@ const styles = StyleSheet.create({
     height: 40,
     backgroundColor: '#efefef',
     borderRadius: 2,
+  },
+  labelContainer: {
+    justifyContent: 'center',
+    height: 25,
+    backgroundColor: 'transparent',
   },
 });
 

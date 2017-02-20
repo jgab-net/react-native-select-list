@@ -3,3 +3,7 @@
 node_modules
 
 *.log
+
+example/src
+example/ios
+example/android
