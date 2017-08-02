@@ -38,7 +38,9 @@ class List extends Component {
 
     return (
       <Modal
-        transparent={true}>
+        transparent={true}
+        onRequestClose={() => { }}
+      >
         <TouchableWithoutFeedback onPress={this.props.onOverlayPress}>
           <View style={{ flex: 1}}></View>
         </TouchableWithoutFeedback>
